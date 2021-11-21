@@ -1,0 +1,41 @@
+n, k = map(int, input().split())
+count = 0 
+
+while True:
+    # 1이니까 반복문 탈출
+    if n == 1:
+        break
+    #k의 배수면 k로 나눠
+    if n % k ==0:
+        n = n / k
+        count += 1
+    #k의 배수가 아니면 -1
+    else:
+        n -= 1
+        count += 1
+print(count)
+
+# k 가 큰 수면 빼는 과정 너무 많다 생략하자
+# 밑부분 책의 내용
+'''
+n, k = map(int, input().split())
+result = 0 
+
+while True:
+    #k의 배수가 될때까지 1 빼는 과정을 한번에    
+    target = (n//k) * k
+    result += n-target
+    # n 이제 k의 배수 도달
+    n = target
+    
+    #n이 k보다 작을때 반복문 탈출
+    if n<k:
+        break
+    #k로 나누기
+    result += 1
+    n//=k
+    
+#n<k 과정 처리
+result += (n-1)
+print(result)
+'''
