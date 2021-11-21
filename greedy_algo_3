@@ -1,0 +1,29 @@
+n, m = map(int, input().split())
+
+numlist = []
+#2차원 배열 만들기
+for i in range(n):
+    tmp_list = list(map(int, input().split()))
+    numlist.append(tmp_list)
+# 2차원 리스트에서 행 정렬
+for sortlist in numlist:
+    sortlist.sort()
+    
+#각 행에서 최솟값들 중 큰 값 비교
+answer = 0
+for l in numlist:
+    if l[0] > answer:
+        answer = l[0]
+
+print(answer)
+
+# 책 min() 이용
+'''
+result = 0
+for i in range(n):
+    data = list(map(int, input().split()))
+    #행의 최솟값
+    min_value = min(data)
+    #최솟값들 중 큰 값 찾기
+    result = max(result, min_value)
+'''
