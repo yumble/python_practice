@@ -1,0 +1,38 @@
+#구현 상하좌우
+n = int(input())
+list1 = list(map(str, input().split()))
+x, y =1, 1
+
+for i in list1:
+    # 가는 방향이 끝이라면 continue 아니면 좌표 반영
+    if i == 'R':
+        if y == n:
+            continue
+        else: 
+            y = y+1
+            
+    elif  i == 'L':
+        if y == 1:
+            continue
+        else: 
+            y = y-1
+            
+    elif  i == 'U':
+        if x == 1:
+            continue
+        else: 
+            x = x-1
+            
+    else:
+        if x == n:
+            continue
+        else: 
+            x = x+1
+            
+print("%d %d" %(x,y) )
+
+'''
+책에서는 방향에 따른 이동 list를 dx,dy로
+dx = [0, 0, -1, 1]
+dy = [-1, 1, 0, 0]
+move_types = ['L', 'R', 'U', 'D']
