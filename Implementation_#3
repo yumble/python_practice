@@ -1,0 +1,27 @@
+n=input()
+
+#dx,dy의 느낌...
+list1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+list2 = ['1', '2', '3', '4', '5', '6', '7', '8']
+
+#list index로 접근
+x = list1.index(n[0])
+y = list2.index(n[1])
+
+#책
+# column = int(ord(input_data[0])) - int(ord[a]) +1
+# 문자 숫자로 변환해서 사용.
+
+#이동가능한 경우의 수 리스트로 저장
+steps = [(-2,-1),(-2,1),(2,1),(2,-1),(1,2),(-1,2),(1,-2),(-1,-2)]
+
+result = 0
+#step으로 이동시에 범위 벗어나면 count x
+for step in steps:
+    new_x = x + step[0]
+    new_y = y + step[1]
+    
+    if new_x >= 0 and new_y >= 0 and new_x <= 7 and new_y <= 7 :
+        result += 1
+
+print(result)
