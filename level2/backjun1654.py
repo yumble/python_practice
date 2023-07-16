@@ -1,5 +1,4 @@
 import sys
-import time
 input = sys.stdin.readline
 
 k, n = map(int, input().split())
@@ -17,13 +16,10 @@ while start <= end:
     for line in lines:
         if line >= mid:
             cnt += line // mid
-    print(cnt)
     if n > cnt:
         end = mid - 1
     else:
         result = mid #📌!!!!!!!!!!!!!!!
         start = mid + 1
-    print(f'end {end} start {start}')
 
-    time.sleep(1)
 print(result)
