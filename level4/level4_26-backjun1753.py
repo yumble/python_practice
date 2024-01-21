@@ -2,11 +2,11 @@ import heapq
 import sys
 
 input = sys.stdin.readline
-
-def dijkstra(start, end):
-    distance = [float('inf')] * (N + 1)
+INF = int(1e9)
+def dijkstra(start):
     distance[start] = 0
-    queue = [(0, start)]
+    queue = []
+    heapq.heappush(queue, (0, start))
     while queue:
         dist, now = heapq.heappop(queue)
         if distance[now] < dist:
@@ -16,17 +16,17 @@ def dijkstra(start, end):
             if distance[u] > distance[now] + d:
                 distance[u] = distance[now] + d
                 heapq.heappush(queue, (distance[u], u))
-    return distance[end]
+    return distance
 
 
-N, E = map(int, input().split())
-graph = [[] for _ in range(N + 1)]
+V, E = map(int, input().split())
+S = int(input())
+graph = [[] for _ in range(V + 1)]
+distance = [INF] * (V + 1)
 for _ in range(E):
     a, b, c = map(int, input().split())
     graph[a].append((b, c))
-    graph[b].append((a, c))
 
-v1, v2 = map(int, input().split())
-result = min(dijkstra(1, v1) + dijkstra(v1, v2) + dijkstra(v2, N),
-           dijkstra(1, v2) + dijkstra(v2, v1) + dijkstra(v1, N))
-print(result if result < float('inf') else -1)
+result = dijkstra(S)
+for i in range(1, V + 1):
+    print(result[i] if result[i] != INF else 'INF')
